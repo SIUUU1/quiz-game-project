@@ -332,5 +332,18 @@ class QuizGame:
         self.save()
         print(f"🗑️  삭제되었습니다: {removed.question}")
     
+    # ------------------------------------------------------------------
+    # 5) 점수 확인
+    # ------------------------------------------------------------------
+
     def show_score(self):
-        pass
+        """최고 점수와 최근 플레이 기록을 보여 준다."""
+        if not self.history:
+            print("ℹ️  아직 퀴즈를 풀지 않았습니다. 먼저 '1. 퀴즈 풀기'를 해 보세요!")
+            return
+
+        print(f"\n🏆 최고 점수: {self.best_score}점")
+        print(f" 지금까지 {len(self.history)}번 플레이했습니다.")
+        print(" 최근 기록:")
+        for record in self.history[-5:]:  # 최근 5개만 표시
+            print(f"   - {record.summary()}")
