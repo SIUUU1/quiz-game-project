@@ -27,7 +27,7 @@ Python 기본 문법 · 클래스(객체 지향) · JSON 파일 저장(데이터
 ```bash
 # 저장소를 클론한 뒤
 git clone https://github.com/SIUUU1/quiz-game-project
-cd quiz-game
+cd quiz-game-project
 
 # 실행 (Python 3.10 이상)
 python main.py
