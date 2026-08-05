@@ -187,10 +187,98 @@ class QuizGame:
         finally:
             # 어떤 경로로 종료되든 마지막에 항상 저장한다.
             self.save()
+            
+    # ------------------------------------------------------------------
+    # 1) 퀴즈 풀기  (보너스: 랜덤 출제, 문제 수 선택, 힌트)
+    # ------------------------------------------------------------------
 
     def play_quiz(self):
-        pass
+        """저장된 퀴즈를 출제하고 채점한다."""
+        if not self.quizzes:
+            print("ℹ️  등록된 퀴즈가 없습니다. 먼저 '2. 퀴즈 추가'로 문제를 만들어 주세요.")
+            return
 
+        total = len(self.quizzes)
+        print(f"\n총 {total}개의 퀴즈가 있습니다.")
+        count = get_int(f" 몇 문제를 풀까요? (1~{total}): ", 1, total)
+
+        # 보너스: random.sample 로 순서를 섞고 원하는 개수만큼 뽑는다.
+        selected = random.sample(self.quizzes, count)
+
+        print(f"\n📝 퀴즈를 시작합니다! (총 {count}문제)")
+        print("-" * 42)
+
+        correct_count = 0 #정답 갯수
+        hints_used = 0 #사용한 힌트 갯수
+
+        for index, quiz in enumerate(selected, start=1):
+            print(f"\n[문제 {index}]")
+            quiz.display()
+            answer, used_hint = self._ask_answer(quiz)
+            if used_hint:
+                hints_used += 1
+
+            if quiz.is_correct(answer):
+                print(" ✅ 정답입니다!")
+                correct_count += 1
+            else:
+                print(f" ❌ 오답입니다. 정답은 {quiz.answer}번({quiz.correct_text()})입니다.")
+
+        # 보너스(힌트): 힌트를 사용한 만큼 점수를 1점씩 차감한다. (최소 0점)
+        final_score = max(0, correct_count - hints_used)
+
+        print("\n" + "=" * 42)
+        print(f" 🏆 결과: {count}문제 중 {correct_count}문제 정답!")
+        if hints_used > 0:
+            print(f"    (힌트 {hints_used}회 사용 → 최종 {final_score}점)")
+        else:
+            print(f"    (최종 {final_score}점)")
+
+        # 보너스(히스토리): 날짜/시간·문제 수·점수를 담은 ScoreRecord 객체로 기록한다.
+        # (날짜는 ScoreRecord 안에서 자동으로 현재 시각이 채워진다.)
+        self.history.append(ScoreRecord(count=count, score=final_score))
+
+        if final_score > self.best_score:
+            self.best_score = final_score
+            print(" 🎉 새로운 최고 점수입니다!")
+        print("=" * 42)
+
+        self.save()
+
+    def _ask_answer(self, quiz):
+        """정답 번호(1~4)를 입력받아 (정답번호, 힌트사용여부)를 돌려준다.
+
+        'h' 를 입력하면 힌트를 보여 준다.(힌트가 있는 경우)
+        빈 입력 / 숫자 아님 / 범위 밖(0, 5 등)은 안내 후 재입력한다.
+        """
+        used_hint = False
+        while True:
+            raw = read_line(" 정답 입력 (1-4, 힌트는 h): ")
+
+            if raw == "":
+                print(" ⚠️  입력이 비어 있습니다. 1~4 사이의 숫자를 입력하세요.")
+                continue
+
+            if raw.lower() == "h":
+                if quiz.hint:
+                    print(f"   💡 힌트: {quiz.hint}  (힌트 사용 시 점수가 1점 차감됩니다)")
+                    used_hint = True
+                else:
+                    print("   (이 문제에는 힌트가 없습니다.)")
+                continue
+
+            try:
+                number = int(raw)
+            except ValueError:
+                print(" ⚠️  숫자만 입력할 수 있습니다. 1~4 사이의 숫자를 입력하세요.")
+                continue
+
+            if number < 1 or number > 4:
+                print(" ⚠️  1~4 사이의 숫자를 입력하세요.")
+                continue
+
+            return number, used_hint
+        
     def add_quiz(self):
         pass
     
