@@ -315,9 +315,22 @@ class QuizGame:
         for i, quiz in enumerate(self.quizzes, start=1):
             print(f" [{i}] {quiz.question}")
         print("-" * 42)
-    
+
+    # ------------------------------------------------------------------
+    # 4) 퀴즈 삭제 (보너스)
+    # ------------------------------------------------------------------
+
     def delete_quiz(self):
-        pass
+        """번호를 선택해 퀴즈를 삭제하고 파일에 반영한다."""
+        if not self.quizzes:
+            print("ℹ️  삭제할 퀴즈가 없습니다.")
+            return
+
+        self.list_quizzes()
+        number = get_int(" 삭제할 퀴즈 번호를 입력하세요: ", 1, len(self.quizzes))
+        removed = self.quizzes.pop(number - 1)
+        self.save()
+        print(f"🗑️  삭제되었습니다: {removed.question}")
     
     def show_score(self):
         pass
