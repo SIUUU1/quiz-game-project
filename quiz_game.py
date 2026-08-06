@@ -10,6 +10,7 @@ from io_utils import read_line, get_int, get_text, ExitRequested
 
 # state.json 은 이 파일(quiz_game.py)이 있는 폴더(= 프로젝트 루트)에 둔다.
 # 이렇게 하면 어느 위치에서 프로그램을 실행하더라도 항상 같은 파일을 사용한다.
+# BASE_DIR : 현재 파일이 위치한 폴더의 절대경로
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE = os.path.join(BASE_DIR, "state.json")
 
@@ -76,7 +77,7 @@ class QuizGame:
     history (list[ScoreRecord]): 게임 점수 기록
     """
 
-    def __init____init__(
+    def __init__(
             self,
             quizzes: list[Quiz] | None = None,
             best_score: int = 0,
