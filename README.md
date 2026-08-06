@@ -46,18 +46,24 @@ python main.py
 | 5 | 점수 확인 | 최고 점수와 최근 플레이 기록 표시 |
 | 6 | 종료 | 데이터를 저장하고 프로그램 종료 |
 
-**입력/예외 처리**
+**✅ 입력/예외 처리**
 - 입력 앞뒤 공백 자동 제거
 - 숫자 아님(`abc`) / 빈 입력 / 허용 범위 밖(`0`, `9` 등) → 안내 후 재입력
 - `Ctrl+C`(KeyboardInterrupt), 입력 종료(EOFError) → 안내 후 안전하게 저장·종료
 - 데이터 파일이 없거나 손상돼도 실행 가능(기본 퀴즈로 복구)
 
-**보너스 기능**
+**✅ 보너스 기능**
 - 랜덤 출제 · 풀 문제 수 선택 · 힌트(사용 시 1점 차감) · 퀴즈 삭제 · 플레이 기록(히스토리)
 
 ## 5. 실행 화면
 
-**개발 환경 설정** (VSCode · Python 버전 · Git 설정)
+**✅ 개발 환경 설정** (VSCode · Python 버전 · Git 설정)
+
+| 항목 | 값 |
+|------|------|
+| 기기 | iMac Retina 5K 27-inch 2019 |
+| Python | 3.13.14 |
+| Git | 2.53.0 |
 
 ![개발 환경 설정](docs/screenshots/env.png)
 
@@ -65,31 +71,31 @@ python main.py
 
 ![메뉴 화면](docs/screenshots/menu.png)
 
-**퀴즈 풀기**
+**✅ 퀴즈 풀기**
 
 ![퀴즈 풀기](docs/screenshots/play.png)
 
-**퀴즈 추가**
+**✅ 퀴즈 추가**
 
 ![퀴즈 추가](docs/screenshots/add_quiz.png)
 
-**퀴즈 목록**
+**✅ 퀴즈 목록**
 
 ![퀴즈 목록](docs/screenshots/list.png)
 
-**퀴즈 삭제**
+**✅ 퀴즈 삭제**
 
 ![퀴즈 삭제](docs/screenshots/delete_quiz.png)
 
-**점수 확인**
+**✅ 점수 확인**
 
 ![점수 확인](docs/screenshots/score.png)
 
-**종료**
+**✅ 종료**
 
 ![종료](docs/screenshots/exit.png)
 
-**Git 커밋 그래프** (`git log --oneline --graph`)
+**✅ Git 커밋 그래프** (`git log --oneline --graph`)
 
 ![Git 로그 그래프](docs/screenshots/git_log.png)
 
