@@ -70,7 +70,7 @@ python main.py
 
 | 클래스 | 파일 | 책임(대표 메서드) |
 |--------|------|-------------------|
-| `Quiz` | `quiz.py` | 문제 한 개를 표현. 문제 출력(`display`), 정답 확인(`is_correct`), 저장·복원(`to_dict`/`from_dict`) |
+| `Quiz` | `quiz.py` | 문제 한 개를 표현. 문제 출력(`display`), 정답 출력(`correct_text`), 정답 확인(`is_correct`), 저장·복원(`to_dict`/`from_dict`) |
 | `ScoreRecord` | `record.py` | 게임 한 판의 기록을 표현. 요약 출력(`summary`), 저장·복원(`to_dict`/`from_dict`) |
 | `QuizGame` | `quiz_game.py` | 게임 전체 관리. 메뉴(`show_menu`)·메인 루프(`run`)·풀기(`play_quiz`)·추가(`add_quiz`)·목록(`list_quizzes`)·삭제(`delete_quiz`)·점수(`show_score`)·저장/불러오기(`save`/`load`) |
 
