@@ -105,7 +105,7 @@ python main.py
 | Python | 3.13.14 |
 | Git | 2.53.0 |
 
-![개발 환경 설정](docs/screenshots/env.png)
+![개발 환경 설정](docs/screenshots/env1.png)
 
 **📌 메뉴 화면**
 
