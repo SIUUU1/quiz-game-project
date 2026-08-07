@@ -255,6 +255,28 @@ quiz-game/
 
 ![Git 로그 그래프](docs/screenshots/git_log.png)
 
+### Git Clone 및 Git Pull
+
+```bash
+# 1) 상위 폴더 등 별도 위치에 저장소를 복제
+cd ..
+git clone https://github.com/SIUUU1/quiz-game-project quiz-game-clone   # ⑦ clone
+cd quiz-game-clone
+
+# 2) 복제본에서 간단한 변경 후 커밋·푸시
+echo "" >> README.md
+echo "> 클론 실습으로 추가된 한 줄입니다." >> README.md
+git add README.md
+git commit -m "Docs: 클론 실습 - README 한 줄 추가"
+git push
+
+# 3) 기존 작업 디렉터리로 돌아가 변경사항 가져오기
+cd ../quiz-game-project
+git pull                                   # ⑧ pull
+```
+
+![Git Clone 및 Git Pull](docs/screenshots/git_clone.png)
+
 ---
 
 ## 10. 확장성·성능 고려사항
@@ -267,6 +289,3 @@ quiz-game/
 - **검색**: 키워드 검색을 추가하면 리스트 전체를 훑는 선형 탐색이 됩니다. → 잦은 검색이면 인덱스나 DB가 유리.
 
 **개선 방향(대량 데이터 시)**: 목록 페이지네이션 도입, 변경분만 저장하는 증분 저장, 그리고 규모가 더 커지면 `sqlite3`(표준 라이브러리) 같은 경량 DB로 전환을 고려할 수 있습니다.
-> 클론 실습으로 추가된 한 줄입니다.
-
-> 클론 실습으로 추가된 한 줄입니다.
