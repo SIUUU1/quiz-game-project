@@ -255,7 +255,7 @@ quiz-game/
 
 ![Git 로그 그래프](docs/screenshots/git_log.png)
 
-### Git Clone 및 Git Pull
+### Git Clone 및 Git Pull 실습
 
 ```bash
 # 1) 상위 폴더 등 별도 위치에 저장소를 복제
