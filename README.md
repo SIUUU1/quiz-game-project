@@ -74,7 +74,7 @@ python main.py
 | `ScoreRecord` | `record.py` | 게임 한 판의 기록을 표현. 요약 출력(`summary`), 저장·복원(`to_dict`/`from_dict`) |
 | `QuizGame` | `quiz_game.py` | 게임 전체 관리. 메뉴(`show_menu`)·메인 루프(`run`)·풀기(`play_quiz`)·추가(`add_quiz`)·목록(`list_quizzes`)·삭제(`delete_quiz`)·점수(`show_score`)·저장/불러오기(`save`/`load`) |
 
-이 외에 `io_utils.py`는 입력·예외 처리(`get_int`, `get_nonempty_text`, `read_line`)를 담당해, 입력 검증 로직을 게임 로직과 분리합니다.
+이 외에 `io_utils.py`는 입력·예외 처리(`get_int`, `get_text`, `read_line`)를 담당해, 입력 검증 로직을 게임 로직과 분리합니다.
 
 ### 왜 함수만 쓰지 않고 클래스로 구조화했나?
 - **관련 데이터와 동작을 함께 묶기 위해서**입니다. 예를 들어 한 퀴즈의 문제·선택지·정답·힌트(데이터)와 "정답을 확인한다"(동작)를 `Quiz` 하나에 모으면, 데이터와 그 데이터를 다루는 코드가 흩어지지 않습니다.
