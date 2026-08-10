@@ -140,7 +140,7 @@ class QuizGame:
                 # indent=2 -> 사람이 읽기 편하게 들여쓰기해서 저장
                 # "w" -> 기존 내용 삭제 후 작성
                 json.dump(data, f, ensure_ascii=False, indent=2)
-        except OSError:
+        except (json.JSONDecodeError, KeyError, TypeError, OSError):
             print("⚠️  데이터를 저장하는 중 오류가 발생했습니다.")
 
     # ------------------------------------------------------------------
